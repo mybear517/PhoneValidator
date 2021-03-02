@@ -77,11 +77,9 @@ public class PhoneNumberValidator {
  
     public static void closeScanner(){
         //close the Scanner object 
-    	System.out.println("Scanner Close");
     	try {
 			input.close();
 		} catch (IOException e) {
-            System.out.println("scanner exception");
 			e.printStackTrace();
 		}
     }
