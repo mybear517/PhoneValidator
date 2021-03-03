@@ -1,7 +1,9 @@
 package com.java.basics;
 
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,25 +23,25 @@ public class PhoneNumberValidatorAppTests {
     private static final String MESSAGE_ONE = "Phone number is valid";
     private static final String MESSAGE_TWO = "Phone number is invalid";
     private static final String MESSAGE_THREE = "Input string is empty";
-    private ByteArrayOutputStream myOutStream;
-    private ByteArrayInputStream myInputStream;
+    private static ByteArrayOutputStream myOutStream;
+    private static ByteArrayInputStream myInputStream;
     private static final String VALID_VALUES = "99-080-99889";
     private static final String INVALID_VALUES = "99-009-78u888";
     private static final String EMPTY_VALUES = "";
 
-    @BeforeEach
-    public void setUp() {
+    @BeforeAll
+    public static void setUp() {
         myOutStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(myOutStream));
     }
 
-    @AfterEach
-    public void tearDown() {
+    @AfterAll
+    public static void tearDown() {
         myOutStream = null;
     }
 
     @Test
-    public void givenValidValuesWhenCheckedThenDisplayValid() {
+    public static void givenValidValuesWhenCheckedThenDisplayValid() {
         input = VALID_VALUES;
         myInputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(myInputStream);
@@ -50,7 +52,7 @@ public class PhoneNumberValidatorAppTests {
     }
 
     @Test
-    public void givenInvalidValuesWhenCheckedThenDisplayInvalid() {
+    public static void givenInvalidValuesWhenCheckedThenDisplayInvalid() {
         input = INVALID_VALUES;
         myInputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(myInputStream);
@@ -61,7 +63,7 @@ public class PhoneNumberValidatorAppTests {
     }
 
     @Test
-    public void givenEmptyValuesWhenCheckedThenDisplayEmpty() {
+    public static void givenEmptyValuesWhenCheckedThenDisplayEmpty() {
         input = EMPTY_VALUES + "\n";
         myInputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(myInputStream);
